@@ -16,12 +16,12 @@
 <!--  server 端    -->
   <bean name="/helloService" class="org.springframework.remoting.caucho.HessianServiceExporter">  
     <property name="service" ref="helloServiceImpl" />  
-    <property name="serviceInterface" value="com.j1.crcare.hello.service.HelloService" />  
+    <property name="serviceInterface" value="com.test.hello.service.HelloService" />  
   </bean>  
 <!-- 替换为 -->
  <bean name="/helloService" class="org.springframework.remoting.hessian.ext.HessianServerServiceExporter">  
     <property name="service" ref="helloServiceImpl" />  
-    <property name="serviceInterface" value="com.j1.crcare.hello.service.HelloService" />  
+    <property name="serviceInterface" value="com.test.hello.service.HelloService" />  
   </bean>  
 ```
 
@@ -30,13 +30,13 @@
   <!-- client 端  -->
     <bean id="helloService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">  
     <property name="serviceUrl" value="http://localhost:8000/exam_3/hessian/helloService" />  
-    <property name="serviceInterface" value="com.j1.crcare.hello.service.HelloService" />
+    <property name="serviceInterface" value="com.test.hello.service.HelloService" />
   </bean>  
   <!-- 替换为-->
   
     <bean id="helloService" class="org.springframework.remoting.hessian.ext.HessianClientFactoryBean">  
     <property name="serviceUrl" value="http://localhost:8000/exam_3/hessian/helloService" />  
-    <property name="serviceInterface" value="com.j1.crcare.hello.service.HelloService" />     
+    <property name="serviceInterface" value="com.test.hello.service.HelloService" />     
   </bean>
 ```
 
