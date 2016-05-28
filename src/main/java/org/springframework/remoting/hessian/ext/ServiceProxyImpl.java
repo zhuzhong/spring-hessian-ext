@@ -3,10 +3,13 @@ package org.springframework.remoting.hessian.ext;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.jmx.access.InvocationFailureException;
 
 public class ServiceProxyImpl implements ServiceProxy {
 
+	private static Log log = LogFactory.getLog(ServiceProxyImpl.class);
 	private Object target;
 
 	public ServiceProxyImpl(Object target) {
@@ -17,7 +20,7 @@ public class ServiceProxyImpl implements ServiceProxy {
 	public Object call(String methodName, Object[] args, Object[] attements) {
 
 		if (attements != null) {
-			
+			log.info("参数传过来了，可以取了...");
 			ThreadLocalHolder.instance().setAttachments(attements);
 		}
 
@@ -43,7 +46,11 @@ public class ServiceProxyImpl implements ServiceProxy {
 			throw new InvocationFailureException(e.getMessage(), e);
 		}
 
-		return ret;
+		try {
+			return ret;
+		} finally {
+			ThreadLocalHolder.instance().clear();
+		}
 	}
 
 }

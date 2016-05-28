@@ -48,7 +48,7 @@ public class ThreadLocalHolder {
 		return currentTheadLocal.get();
 	}
 */
-	public void removeRpcId() {
+	public void clear() {
 		currentTheadLocal.remove();
 	}
 
