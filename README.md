@@ -30,8 +30,7 @@
   <!-- client 端  -->
     <bean id="helloService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">  
     <property name="serviceUrl" value="http://localhost:8000/exam_3/hessian/helloService" />  
-    <property name="serviceInterface" value="com.j1.crcare.hello.service.HelloService" />     
-    <property name="overloadEnabled" value="false" />  
+    <property name="serviceInterface" value="com.j1.crcare.hello.service.HelloService" />
   </bean>  
   <!-- 替换为-->
   
@@ -45,6 +44,7 @@
 3.客户端调用 
 org.springframework.remoting.hessian.ext.ThreadLocalHolder.setAttachments(Object[] id) 
 方法设置需要传的参数
+
 4.服务端调用
 org.springframework.remoting.hessian.ext.ThreadLocalHolder.getAttachments()
 获取相应的参数 
