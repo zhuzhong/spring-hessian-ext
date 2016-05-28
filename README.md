@@ -48,3 +48,4 @@ org.springframework.remoting.hessian.ext.ThreadLocalHolder.setAttachments(Object
 4.服务端调用
 org.springframework.remoting.hessian.ext.ThreadLocalHolder.getAttachments()
 获取相应的参数 
+
