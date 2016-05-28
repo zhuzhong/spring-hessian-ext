@@ -48,3 +48,6 @@ org.springframework.remoting.hessian.ext.ThreadLocalHolder.setAttachments(Object
 4.服务端调用
 org.springframework.remoting.hessian.ext.ThreadLocalHolder.getAttachments()
 获取相应的参数 
+
+5.对于只传输一个string类型的参数可使用
+org.springframework.remoting.hessian.ext.Tracer中的方法，这个相对比较简单
