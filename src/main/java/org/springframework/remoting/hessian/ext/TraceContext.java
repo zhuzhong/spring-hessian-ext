@@ -23,4 +23,8 @@ public class TraceContext implements Serializable {
     
     
     
+    private String className; //接口类名称
+    private String methodName; //方法名称
+    private String args; //多个参数组合成 一个string
+    
 }
