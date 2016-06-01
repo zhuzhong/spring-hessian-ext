@@ -42,11 +42,11 @@
 
 
 3.客户端调用 
-org.springframework.remoting.hessian.ext.ThreadLocalHolder.setAttachments(Object[] id) 
+org.springframework.remoting.hessian.ext.ThreadLocalHolder.setTraceContext(TraceContext id)
 方法设置需要传的参数
 
 4.服务端调用
-org.springframework.remoting.hessian.ext.ThreadLocalHolder.getAttachments()
+org.springframework.remoting.hessian.ext.ThreadLocalHolder.getTraceContext()
 获取相应的参数 
 
 5.对于只传输一个string类型的参数可使用
