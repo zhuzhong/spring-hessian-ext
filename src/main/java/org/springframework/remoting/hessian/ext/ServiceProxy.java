@@ -11,5 +11,5 @@ public interface ServiceProxy {
 
 	
 	
-	Object call(String methodName,Object[] args,Object[] attements);
+	Object call(String methodName,Object[] args,TraceContext context);
 }

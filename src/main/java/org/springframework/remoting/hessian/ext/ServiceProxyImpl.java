@@ -17,11 +17,11 @@ public class ServiceProxyImpl implements ServiceProxy {
 	}
 
 	@Override
-	public Object call(String methodName, Object[] args, Object[] attements) {
+	public Object call(String methodName, Object[] args, TraceContext context) {
 
-		if (attements != null) {
-			log.info("参数传过来了，可以取了...");
-			ThreadLocalHolder.instance().setAttachments(attements);
+		if (context != null) {
+			log.info("tracecontext参数传过来了，可以取了...");
+			ThreadLocalHolder.instance().setTraceContext(context);
 		}
 
 		Class<?>[] argClasses = new Class[args.length];

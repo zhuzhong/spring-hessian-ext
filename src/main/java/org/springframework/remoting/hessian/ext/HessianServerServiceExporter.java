@@ -21,7 +21,7 @@ public class HessianServerServiceExporter extends HessianServiceExporter {
 	private ServiceProxy serviceProxy;
 
 	public void setService(Object service) {
-		serviceProxy = new ServiceProxyImpl(service);
+		this.serviceProxy = new ServiceProxyImpl(service);
 		super.setService(serviceProxy);
 	}
 

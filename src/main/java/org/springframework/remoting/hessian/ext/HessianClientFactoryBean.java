@@ -50,9 +50,9 @@ public class HessianClientFactoryBean implements MethodInterceptor,
 
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
-		Object[] attachments = null;
-		if (ThreadLocalHolder.instance().getAttachments() != null) {
-			attachments = ThreadLocalHolder.instance().getAttachments();
+		TraceContext attachments = null;
+		if (ThreadLocalHolder.instance().getTraceContext() != null) {
+			attachments = ThreadLocalHolder.instance().getTraceContext();
 		}
 		return serviceProxyProxy.call(invocation.getMethod().getName(),
 				invocation.getArguments(), attachments);

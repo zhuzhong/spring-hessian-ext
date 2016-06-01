@@ -11,7 +11,8 @@ package org.springframework.remoting.hessian.ext;
 public class ThreadLocalHolder {
 
 	//private static ThreadLocal<Map<String, Object>> currentTheadLocal = new ThreadLocal<Map<String, Object>>();
-	private static ThreadLocal<Object[]> currentTheadLocal = new ThreadLocal<Object[]>();
+	//private static ThreadLocal<Object[]> currentTheadLocal = new ThreadLocal<Object[]>();
+	private static ThreadLocal<TraceContext> currentTheadLocal = new ThreadLocal<TraceContext>();
 	private static ThreadLocalHolder ins = new ThreadLocalHolder();
 
 	private ThreadLocalHolder() {
@@ -23,9 +24,9 @@ public class ThreadLocalHolder {
 	}
 
 	
-	  public Object[] getAttachments() { return currentTheadLocal.get(); }
+	  public TraceContext getTraceContext() { return currentTheadLocal.get(); }
 	 
-	  public void setAttachments(Object[] id) { currentTheadLocal.set(id); }
+	  public void setTraceContext(TraceContext id) { currentTheadLocal.set(id); }
 	 
 
 	/*public void setUserAttribute(String key, Object value) {
