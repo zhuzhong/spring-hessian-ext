@@ -19,22 +19,6 @@ public class Tracer {
     private Tracer() {
 
     }
-
-    /*
-     * public static Tracer instance = new Tracer();
-     * 
-     * public void setTraceId(Long traceId) {
-     * ThreadLocalHolder.instance().setTraceContext(new TraceContext(traceId));
-     * }
-     * 
-     * public Long getTracerId() { if
-     * (ThreadLocalHolder.instance().getTraceContext() != null) { return
-     * ThreadLocalHolder.instance().getTraceContext().getTraceId(); } else {
-     * return null; } }
-     * 
-     * public void clear() { ThreadLocalHolder.instance().clear(); }
-     */
-
     private static ThreadLocal<TraceContext> local = new ThreadLocal<TraceContext>();
 
     public static void beginTracer() {
