@@ -1,8 +1,9 @@
 /**
  * 
  */
-package org.springframework.remoting.hessian.ext;
+package com.zz.hessian.ext;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -12,7 +13,7 @@ import com.alibaba.fastjson.JSON;
  * @author Administrator
  *
  */
-public class LogBean {
+public class LogBean implements Serializable {
 
     private final Long traceId; // 跟踪id
     private final String method; // 接口方法
@@ -57,6 +58,7 @@ public class LogBean {
         sb.append("methodName=");
 
         sb.append(method);
+        sb.append(",");
         sb.append("args=");
         sb.append(genArgsString());
         sb.append(",");

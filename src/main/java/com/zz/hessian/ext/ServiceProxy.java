@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.springframework.remoting.hessian.ext;
+package com.zz.hessian.ext;
 
 /**
  * @author sunff
@@ -9,7 +9,5 @@ package org.springframework.remoting.hessian.ext;
  */
 public interface ServiceProxy {
 
-	
-	
 	Object call(String methodName,Object[] args,TraceContext context);
 }

@@ -1,9 +1,11 @@
 /**
  * 
  */
-package org.springframework.remoting.hessian.ext;
+package com.zz.hessian.ext;
 
 import org.springframework.remoting.caucho.HessianServiceExporter;
+
+import com.zz.hessian.ext.impl.ServiceProxyImpl;
 
 /**
  * server 端 <bean name="/helloService"

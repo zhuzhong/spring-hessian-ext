@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.springframework.remoting.hessian.ext;
+package com.zz.hessian.ext;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -52,21 +52,11 @@ public class HessianClientFactoryBean implements MethodInterceptor, FactoryBean<
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        TraceContext traceContext = null;
-        if (ThreadLocalHolder.instance().getTraceContext() != null) {
-            traceContext = ThreadLocalHolder.instance().getTraceContext();
-
-        }
-        Long traceId = traceContext == null ? null : traceContext.getTraceId();
-        if (traceId != null) {
-            log.info(new LogBean(traceId, invocation.getClass().getName(), invocation.getMethod().getName(), invocation
-                    .getArguments()));
-        }
+        TraceContext traceContext = Tracer.getTraceContext();
+        Tracer.trace(invocation.getClass().getName(), invocation.getMethod().getName(), invocation.getArguments());
         Object ret = serviceProxyProxy.call(invocation.getMethod().getName(), invocation.getArguments(), traceContext);
-        if (traceId != null) {
-            log.info(new LogBean(traceId, invocation.getClass().getName(), invocation.getMethod().getName(), invocation
-                    .getArguments()));
-        }
+
+        Tracer.trace(invocation.getClass().getName(), invocation.getMethod().getName(), invocation.getArguments());
         return ret;
     }
 
