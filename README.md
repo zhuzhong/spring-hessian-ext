@@ -19,7 +19,7 @@
     <property name="serviceInterface" value="com.test.hello.service.HelloService" />  
   </bean>  
 <!-- 替换为 -->
- <bean name="/helloService" class="org.springframework.remoting.hessian.ext.HessianServerServiceExporter">  
+ <bean name="/helloService" class="com.zz.hessian.ext.HessianServerServiceExporter">  
     <property name="service" ref="helloServiceImpl" />  
     <property name="serviceInterface" value="com.test.hello.service.HelloService" />  
   </bean>  
@@ -34,7 +34,7 @@
   </bean>  
   <!-- 替换为-->
   
-    <bean id="helloService" class="org.springframework.remoting.hessian.ext.HessianClientFactoryBean">  
+    <bean id="helloService" class="com.zz.hessian.ext.HessianClientFactoryBean">  
     <property name="serviceUrl" value="http://localhost:8000/exam_3/hessian/helloService" />  
     <property name="serviceInterface" value="com.test.hello.service.HelloService" />     
   </bean>
@@ -42,13 +42,12 @@
 
 
 3.客户端调用 
-org.springframework.remoting.hessian.ext.ThreadLocalHolder.setTraceContext(TraceContext id)
-方法设置需要传的参数
+com.zz.hessian.ext.web.ClientTraceFilter　开启tracer与关闭tracer
 
 4.服务端调用
-org.springframework.remoting.hessian.ext.ThreadLocalHolder.getTraceContext()
+com.zz.hessian.ext.Tracer.getTraceContext()
 获取相应的参数 
 
-5.对于只传输一个string类型的参数可使用
-org.springframework.remoting.hessian.ext.Tracer中的方法，这个相对比较简单
+5.也可以调用Tracer.trace()方法　进行trace，如果应用它，则需要设置
+log4j.logger.com.zz.hessian.ext.Tracer=trace 才能看到相应的日志
 
